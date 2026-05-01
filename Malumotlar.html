@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Video Darsliklar | To'liq Kurs</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #0f172a;
+      --accent: #10b981;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #334155;
+      --text-light: #64748b;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --radius: 12px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: white;
+      padding: 4rem 1rem 3rem;
+      text-align: center;
+    }
+    header h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 0.5rem; }
+    header p { max-width: 650px; margin: 0 auto; opacity: 0.9; font-size: 1.1rem; }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin: 2.5rem 0 1.5rem;
+      color: var(--secondary);
+      position: relative;
+    }
+    .section-title::after {
+      content: ""; display: block; width: 60px; height: 4px;
+      background: var(--primary); margin: 0.5rem auto 0; border-radius: 2px;
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .video-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      background: #111;
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-info { padding: 1rem; }
+    .video-info h3 { margin-bottom: 0.4rem; color: var(--secondary); }
+    .video-info p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.2rem 0.6rem; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 600;
+    }
+    .badge.html { background: #e0e7ff; color: #3730a3; }
+    .badge.css { background: #d1fae5; color: #065f46; }
+
+    /* Info Cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .info-card {
+      background: var(--card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--primary);
+    }
+    .info-card.css-card { border-left-color: var(--accent); }
+    .info-card h2 { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .info-card p { margin-bottom: 1rem; color: var(--text-light); }
+    .info-card ul { list-style: none; padding-left: 0; }
+    .info-card li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .info-card li:last-child { border-bottom: none; }
+    .info-card li::before {
+      content: "✓"; color: var(--accent); font-weight: bold; flex-shrink: 0;
+    }
+
+    /* Features */
+    .features {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin: 2rem 0;
+    }
+    .features h2 { margin-bottom: 1.5rem; text-align: center; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-item h3 { color: var(--primary); margin-bottom: 0.4rem; }
+    .feature-item p { font-size: 0.9rem; color: var(--text-light); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--secondary);
+      color: #94a3b8;
+      margin-top: 3rem;
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      header { padding: 2.5rem 1rem; }
+      .container { padding: 1rem; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🌐 HTML & CSS Video Darsliklar</h1>
+  <p>Web dasturlashning asoslarini 0 dan professional darajagacha o'rganing. Tez, tushunarli va amaliy!</p>
+</header>
+
+<main class="container">
+  <h2 class="section-title">📺 Video Darsliklar</h2>
+  <div class="video-grid">
+    <!-- HTML -->
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/UB1O30fR-EE" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>HTML Asoslari (1-dars)</h3>
+        <p>HTML nima? Teglar, atributlar, sahifa tuzilishi va ilk veb-sahifangizni yaratish.</p>
+        <span class="badge html">HTML</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>HTML Semantik Teglar</h3>
+        <p>header, nav, main, section, article, footer - professional kod yozish sirlari.</p>
+        <span class="badge html">HTML</span>
+      </div>
+    </div>
+    <!-- CSS -->
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/1Rs2ND1ryYc" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>CSS Kirish (1-dars)</h3>
+        <p>CSS qanday ishlaydi? Ranglar, shriftlar, box model va inline vs external CSS.</p>
+        <span class="badge css">CSS</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/yfoY53QXEnI" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>CSS Flexbox & Grid</h3>
+        <p>Zamonaviy layout yaratish. Responsive dizayn, media queries va real loyiha.</p>
+        <span class="badge css">CSS</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">📚 Batafsil Ma'lumotlar</h2>
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>🟦 HTML (HyperText Markup Language)</h2>
+      <p>HTML - barcha veb-sahifalarning skeleti. U kontentni tuzish, ma'noni belgilash va brauzerga qanday ko'rsatishni aytib beradi.</p>
+      <ul>
+        <li>Veb-sahifa tuzilishi (DOCTYPE, html, head, body)</li>
+        <li>Matn, rasm, havola, jadval va forma teglari</li>
+        <li>Semantik yozish va SEO optimizatsiya</li>
+        <li>Accessibility (a11y) tamoyillari</li>
+        <li>HTML5 yangiliklari (audio, video, canvas, API)</li>
+      </ul>
+    </div>
+
+    <div class="info-card css-card">
+      <h2>🟩 CSS (Cascading Style Sheets)</h2>
+      <p>CSS - veb-sahifaning ko'rinishi, dizayni va interaktivligi uchun javob beradi. Ranglar, joylashuv, animatsiya va moslashuvchanlik.</p>
+      <ul>
+        <li>Selectors, specificity va cascade qoidalari</li>
+        <li>Box model, margin, padding, border</li>
+        <li>Flexbox va CSS Grid layout tizimlari</li>
+        <li>Responsive dizayn va Media Queries</li>
+        <li>Animatsiyalar, transitions va CSS variables</li>
+        <li>Modern CSS (nesting, container queries, layers)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="features">
+    <h2>💡 Nima Uchun Aynan Bu Kurs?</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>🎯 Amaliy Yondashuv</h3>
+        <p>Har bir dars real loyiha bilan mustahkamlanadi. Nazariya + kod yozish.</p>
+      </div>
+      <div class="feature-item">
+        <h3>⏱ Tez Natija</h3>
+        <p>1-2 hafta ichida o'z veb-saytingizni noldan yaratishingiz mumkin.</p>
+      </div>
+      <div class="feature-item">
+        <h3>📱 Zamonaviy</h3>
+        <p>2024-2026 standartlari, responsive, dark mode va accessibility.</p>
+      </div>
+      <div class="feature-item">
+        <h3>🆓 Bepul & Ochiq</h3>
+        <p>Barcha videolar va materiallar ochiq. Cheklovlar yo'q.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 HTML & CSS Video Darsliklar | Web Dasturlash Asoslari</p>
+  <p style="margin-top: 0.5rem;">Savol bormi? 📩 <a href="#">telegram: @web_darsliklar</a></p>
+</footer>
+
+</body>
+</html>
